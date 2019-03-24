@@ -17,5 +17,20 @@ Once that works, connect to the thing over WebREPL for easy file transfer. Clone
 
 Enter your wifi credentials into ssid.info and transfer that file along with the python files in server/ to the thing using the WebREPL interface. Restart the thing by hitting the RST button or by powercycling the device. The thing should auto-connect to the wifi and start listening on port 5000.
 
-# Commands
-The thing is configured to turn on LED2 when it receives `b'LON'` and to turn off LED2 when it receives `b'LOFF'`. An example command is shown in client/.
+# Commands  
+- `b'LON'` turns the onboard LED on
+- `b'LOFF'` turns the onboard LED off  
+This scheme is intended to show how you might set up one of these things to accept commands to control different types of components.
+
+An example client-side socket connection implementation is shown in the client/ directory.  
+
+# GPIO Pins
+My current knowlege of the mapping between micropython API pin IDs (left) and labels printed on each thing (right) is below. These may be specific to the particular models I purchased. No guarantees.
+
+|    MicroPython    | Onboard |
+| :---------------: | :-----: |
+| `machine.Pin(0)`  | D0      |
+| `machine.Pin(2)`  | LED     |
+| `machine.Pin(4)`  | D1      |
+| `machine.Pin(5)`  | D2      |
+| `machine.Pin(16)` | D3      |
